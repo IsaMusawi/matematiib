@@ -1,0 +1,19 @@
+
+
+<mat-accordion multi="false" *ngIf="listVideo.length > 0">
+    <mat-expansion-panel *ngFor="let data of listVideo">
+        <mat-expansion-panel-header>
+            {{data.Title}}
+        </mat-expansion-panel-header>
+        <div *ngIf="data.IsVideo" class="sidenav-container">
+            <iframe width="640" height="480" [src]="getYoutubeVideoUrl(data.Url) | safeUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div *ngIf="!data.IsVideo" class="sidenav-container">
+            <iframe width="860" height="720" [src]="data.Url | safeUrl" allow="autoplay"></iframe>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+

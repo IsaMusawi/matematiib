@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared.module';
+import { HeaderComponent } from './header/header.component';
+import { ContentComponent } from './content/content.component';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,10 @@ import { SharedModule } from './shared.module';
   imports: [
     RouterOutlet,
     SharedModule,
+    HeaderComponent,
+    ContentComponent,
   ],
-  template: '<router-outlet></router-outlet>'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
 })
 export class AppComponent {}

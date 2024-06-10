@@ -1,19 +1,45 @@
 
 
-<mat-accordion multi="false" *ngIf="listVideo.length > 0">
+<!-- <mat-accordion multi="false" *ngIf="listVideo.length > 0">
     <mat-expansion-panel *ngFor="let data of listVideo">
         <mat-expansion-panel-header>
             {{data.Title}}
         </mat-expansion-panel-header>
-        <div *ngIf="data.IsVideo" class="sidenav-container">
-            <iframe width="640" height="480" [src]="getYoutubeVideoUrl(data.Url) | safeUrl" frameborder="0" allowfullscreen></iframe>
+        <div *ngIf="data.IsVideo">
+            <div class="content-wrapper">
+                <iframe width="860" height="720" [src]="getYoutubeVideoUrl(data.Url) | safeUrl" frameborder="0" allowfullscreen></iframe>
+            </div>            
         </div>
 
         <div *ngIf="!data.IsVideo" class="sidenav-container">
             <iframe width="860" height="720" [src]="data.Url | safeUrl" allow="autoplay"></iframe>
         </div>
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
+
+<div *ngFor="let data of listData">
+    <div *ngIf="data.ListData.length > 0">
+        <h1>{{data.ContentTitle}}</h1>
+        <div>
+            <mat-accordion multi="false" *ngIf="data.ListData.length > 0">
+                <mat-expansion-panel *ngFor="let dat of data.ListData">
+                    <mat-expansion-panel-header>
+                        {{dat.Title}}
+                    </mat-expansion-panel-header>
+                    <div *ngIf="dat.IsVideo === 'Y'">
+                        <div >
+                            <iframe width="860" height="720" [src]="getYoutubeVideoUrl(dat.Url) | safeUrl" frameborder="0" allowfullscreen></iframe>
+                        </div>            
+                    </div>
+            
+                    <div *ngIf="dat.IsVideo === 'N'" class="sidenav-container">
+                        <iframe width="860" height="720" [src]="getGoogleDriveUrl(dat.Url) | safeUrl" allow="autoplay"></iframe>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
 
 
 
